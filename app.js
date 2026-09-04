@@ -397,53 +397,60 @@ function showToast(msg) {
 }
 
 // 5 AI Specialist Agents System
-const PKG_INFO = 'Astronixa có 4 gói: 🌱 <b>Basic 0đ</b> (miễn phí), ⚡ <b>Pro Month $10/tháng</b>, 👑 <b>Pro Year $108/năm</b> ($9/tháng), và 💎 <b>Family Year $508/năm</b> (5 tài khoản).';
+const PKG_INFO = 'Astronixa có 4 gói dịch vụ tối ưu: 🌱 <b>Basic 0đ</b> (miễn phí), ⚡ <b>Pro Month $10/tháng</b>, 👑 <b>Pro Year $108/năm</b> (chỉ $9/tháng — tặng kèm khóa Mastermind VIP), và 💎 <b>Family Year $508/năm</b> (5 tài khoản Pro riêng biệt cho cả gia đình/đội nhóm).';
 
 const AGENTS = {
   sofia: {
     name: 'Sofia',
     emoji: '🛰️',
     role: 'Sản phẩm & Gói dịch vụ',
-    greeting: 'Chào bạn 👋 Mình là <b>Sofia</b> — phụ trách <b>Sản phẩm & Gói dịch vụ</b>. Bạn muốn hỏi gói dịch vụ nào ạ?',
-    quick: ['Astronixa là gì?', 'So sánh 4 gói SaaS', 'Tôi không rành công nghệ']
+    greeting: 'Chào bạn 👋 Mình là <b>Sofia</b> — phụ trách <b>Sản phẩm & Gói dịch vụ</b>. Bạn muốn hiểu Astronixa là gì hay tìm gói phù hợp ạ?',
+    quick: ['Astronixa là gì?', 'Khác gì Facebook/Zalo/Zoom?', 'App có dùng thật được không?', 'So sánh 4 gói SaaS', 'Tôi không rành công nghệ']
   },
-  aris: {
-    name: 'Aris',
-    emoji: '🤖',
-    role: 'Công nghệ & AI Agent',
-    greeting: 'Xin chào 👋 Mình là <b>Aris</b> — phụ trách <b>Công nghệ & AI Agent</b>. Bạn cần giải đáp tính năng AI Agent nào ạ?',
-    quick: ['AI Agent làm được gì?', 'Bảo mật E2E thế nào?', 'Meeting 4K có gì hot?']
+  leo: {
+    name: 'Leo',
+    emoji: '🛡️',
+    role: 'Kỹ thuật & Kích hoạt',
+    greeting: 'Xin chào 👋 Mình là <b>Leo</b> — phụ trách <b>Bảo mật, Kỹ thuật & Kích hoạt</b>. Bạn cần hỗ trợ đăng ký hay thắc mắc về bảo mật E2E ạ?',
+    quick: ['Bảo mật E2E thế nào?', 'Văn phòng & Pháp lý', 'Cách đăng ký tài khoản', 'Mã bảo trợ là gì?']
   },
   vera: {
     name: 'Vera',
     emoji: '💰',
-    role: 'Tài chính & Thu nhập',
-    greeting: 'Chào bạn 👋 Mình là <b>Vera</b> — phụ trách <b>Tài chính & Affiliate</b>. Bạn muốn hỏi về rút tiền hay hoa hồng ạ?',
-    quick: ['Hoa hồng rút thế nào?', 'Ít vốn bắt đầu thế nào?', 'Staking thưởng bao nhiêu?']
+    role: 'Affiliate & Thu nhập',
+    greeting: 'Chào bạn 👋 Mình là <b>Vera</b> — phụ trách <b>Tài chính & Thu nhập thụ động</b>. Bạn muốn hỏi về chính sách hoa hồng hay rút tiền ạ?',
+    quick: ['Chính sách hoa hồng Affiliate', 'Rút tiền bao lâu về?', 'Ít vốn có làm được không?', 'Staking Token thưởng thế nào?']
   },
-  leo: {
-    name: 'Leo',
-    emoji: '🛠️',
-    role: 'Kỹ thuật & Kích hoạt',
-    greeting: 'Xin chào 👋 Mình là <b>Leo</b> — phụ trách <b>Pháp lý & Kỹ thuật</b>. Bạn cần kiểm chứng điều gì ạ?',
-    quick: ['Công ty có hợp pháp không?', 'Văn phòng ở đâu?', 'Cách đăng ký tài khoản']
+  aris: {
+    name: 'Aris',
+    emoji: '🤖',
+    role: 'AI & Tự động hóa',
+    greeting: 'Xin chào 👋 Mình là <b>Aris</b> — phụ trách <b>Công nghệ & AI Agent</b>. Bạn muốn tìm hiểu cách AI tự động hóa công việc thay bạn không?',
+    quick: ['AI Agent làm được gì?', 'Tự động chốt đơn ra sao?', 'Meeting 4K có gì hot?']
   },
   mai: {
     name: 'Mai',
     emoji: '💜',
-    role: 'Quyền lợi & Đồng hành',
-    greeting: 'Chào bạn 💜 Mình là <b>Mai</b> — phụ trách <b>Quyền lợi khách hàng</b>. Mình luôn sẵn sàng hỗ trợ bạn!',
-    quick: ['Đăng ký có ưu đãi gì?', 'Kênh Zalo chính thức', 'Mentor hỗ trợ 1-1']
+    role: 'Chăm sóc khách hàng',
+    greeting: 'Chào bạn 💜 Mình là <b>Mai</b> — phụ trách <b>Chăm sóc & Đồng hành cộng đồng</b>. Mình luôn sẵn sàng hỗ trợ bạn 24/7!',
+    quick: ['Kết nối Mentor Võ Quốc Trí', 'Kênh Zalo chính thức', 'Đăng ký có quà tặng gì?']
   }
 };
 
 const KB = [
-  { k: ['astronixa là gì', 'là gì vậy', 'giới thiệu', 'super app'], a: '🌌 <b>Astronixa</b> là siêu ứng dụng <b>All-in-One từ Mỹ</b>, hợp nhất: Mạng xã hội, Ví Crypto, TMĐT, AI Agent, Meeting 4K & Affiliate. Giúp tiết kiệm 80% chi phí và tự động hóa công việc.' },
-  { k: ['gói', 'bảng giá', 'giá', 'phí', 'saas'], a: PKG_INFO },
+  { k: ['astronixa là gì', 'là gì vậy', 'giới thiệu', 'super app'], a: '🌌 <b>Astronixa</b> là siêu ứng dụng <b>All-in-One từ Mỹ</b>, hợp nhất: Mạng xã hội, Ví Crypto, TMĐT, AI Agent, Meeting 4K & Affiliate. Giúp tiết kiệm 80% chi phí phần mềm và tự động hóa toàn bộ công việc.' },
+  { k: ['khác gì', 'so sánh', 'facebook', 'zalo', 'zoom', 'khác biệt'], a: '🚀 <b>Astronixa khác biệt hoàn toàn:</b> Thay vì dùng 6 app rời rạc và tốn hàng triệu mỗi tháng, Astronixa hợp nhất MXH + Chat E2E + Meeting 4K + Sàn TMĐT + AI Agent + Ví Token chỉ trong 1 tài khoản duy nhất, vừa làm việc vừa tạo thu nhập.' },
+  { k: ['dùng thật', 'thực tế', 'thật không', 'app thật', 'sản phẩm thật'], a: '📱 <b>App đang hoạt động thực tế 100%!</b> Bạn có thể tải ngay trên App Store & Google Play, trải nghiệm các tính năng nhắn tin, gọi video 4K, tương tác AI và kiếm thu nhập thụ động mỗi ngày.' },
+  { k: ['gói', 'bảng giá', 'giá', 'phí', 'saas', 'so sánh 4 gói'], a: PKG_INFO },
+  { k: ['không rành', 'người mới', 'mù công nghệ', 'dễ dùng', 'khó dùng'], a: '💡 <b>Hoàn toàn yên tâm!</b> Nền tảng thiết kế cực kỳ đơn giản cho người mới. Ngoài ra có đội ngũ Trợ lý AI và <b>Chuyên Gia Võ Quốc Trí</b> (Hotline 0931332671) hướng dẫn cầm tay chỉ việc 1-1.' },
   { k: ['pháp lý', 'hợp pháp', 'văn phòng', 'ở đâu', 'trụ sở'], a: '🏢 <b>Astronixa LLC (Mỹ):</b> 8 The Green, STE B, Dover, DE 19958, USA (Tel: 00 1 (302) 215-5384 | Email: Suport@astronixa.com).<br><b>Astronixa VN:</b> Tầng 7 Rise Building, 2A1 Nguyễn Thị Minh Khai, TP.HCM (MST 0319573968).' },
-  { k: ['rút tiền', 'hoa hồng', 'rút', 'thu nhập'], a: '💸 Hoa hồng Affiliate trả trực tiếp vào ví. Rút tiền nhanh chóng trong 3 giây về tài khoản ngân hàng hoặc ví Web3. Lệnh rút tối thiểu 10 USDT.' },
-  { k: ['bảo mật', 'an toàn', 'e2e', 'zero-knowledge'], a: '🔒 Bảo mật tuyệt đối bằng mã hóa đầu cuối E2EE (Signal Protocol) & kiến trúc Zero-Knowledge. Máy chủ không thể đọc tin nhắn của bạn.' },
-  { k: ['zalo', 'liên hệ', 'mentor', 'võ quốc trí', 'giám đốc', 'hotline', 'tư vấn'], a: '💬 Bạn có thể kết nối trực tiếp với <b>Chuyên Gia Võ Quốc Trí</b> (Giám Đốc Phát Triển Thị Trường Astronixa Việt Nam) qua Hotline/Zalo: <b>0931332671</b> để được hướng dẫn 1-1.' }
+  { k: ['rút tiền', 'hoa hồng', 'rút', 'thu nhập', 'bao lâu', 'affiliate'], a: '💸 Hoa hồng Affiliate trả trực tiếp vào ví ngay khi phát sinh. Rút tiền nhanh chóng trong 3 giây về tài khoản ngân hàng hoặc ví Web3. Lệnh rút tối thiểu chỉ 10 USDT.' },
+  { k: ['bảo mật', 'an toàn', 'e2e', 'zero-knowledge', 'signal'], a: '🔒 Bảo mật tuyệt đối bằng mã hóa đầu cuối E2EE (Signal Protocol) & kiến trúc Zero-Knowledge. Máy chủ không lưu trữ và không thể đọc tin nhắn hay cuộc gọi của bạn.' },
+  { k: ['zalo', 'liên hệ', 'mentor', 'võ quốc trí', 'giám đốc', 'hotline', 'tư vấn', 'kết nối'], a: '💬 Bạn có thể kết nối trực tiếp với <b>Chuyên Gia Võ Quốc Trí</b> (Giám Đốc Phát Triển Thị Trường Astronixa Việt Nam) qua Hotline/Zalo: <b>0931332671</b> để được hướng dẫn 1-1.' },
+  { k: ['ai agent', 'làm được gì', 'chốt đơn', 'tự động', 'tự động hóa'], a: '🤖 <b>AI Agent 24/7:</b> Tự động viết bài quảng cáo, thiết kế ảnh, tư vấn khách hàng, trả lời tin nhắn và tự động gửi link chốt đơn suốt ngày đêm không cần nhân sự trực!' },
+  { k: ['đăng ký', 'tài khoản', 'mã bảo trợ', 'bảo trợ'], a: '📝 <b>Đăng ký rất nhanh:</b> Nhấp vào nút <b>"Tham gia ngay"</b> ở đầu trang hoặc link bảo trợ: <code>https://office.astronixa.com/sign-up/7088825163.html</code> để mở tài khoản trong 30 giây.' },
+  { k: ['quà tặng', 'ưu đãi', 'mastermind', 'quyền lợi'], a: '🎁 <b>Đặc quyền hội viên:</b> Tặng ngay bộ khóa học Mastermind $499 về AI Automation & Affiliate thực chiến, hỗ trợ kỹ thuật 1-1 trọn đời từ cộng đồng Astronixa!' },
+  { k: ['meeting', 'họp 4k', 'phòng họp'], a: '🎥 <b>Phòng họp Ultra HD 4K:</b> Họp không giới hạn thời gian, khử ồn AI, phiên dịch đa ngôn ngữ trực tiếp và sức chứa hàng nghìn người cùng lúc.' }
 ];
 
 let curAgent = 'sofia';
