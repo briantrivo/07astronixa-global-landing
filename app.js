@@ -434,10 +434,18 @@ const AGENTS = {
     role: 'Chăm sóc khách hàng',
     greeting: 'Chào bạn 💜 Mình là <b>Mai</b> — phụ trách <b>Chăm sóc & Đồng hành cộng đồng</b>. Mình luôn sẵn sàng hỗ trợ bạn 24/7!',
     quick: ['Kết nối Mentor Võ Quốc Trí', 'Kênh Zalo chính thức', 'Đăng ký có quà tặng gì?']
+  },
+  gem: {
+    name: 'Master GEM',
+    emoji: '💎',
+    role: 'Google Gemini AI',
+    greeting: 'Xin chào! 💎 Mình là <b>Master GEM</b> — Trợ lý AI cao cấp được xây dựng trên Google Gemini. Bạn muốn giải đáp về toàn bộ siêu ứng dụng Astronixa hay phân tích chuyên sâu ạ?',
+    quick: ['Astronixa là gì?', 'Mở trên Google Gemini', 'So sánh 4 gói SaaS', 'Kết nối Mentor Võ Quốc Trí']
   }
 };
 
 const KB = [
+  { k: ['mở trên google gemini', 'mở gem', 'trên gemini', 'google gemini', 'link gem', 'phiên gemini'], a: '💎 <b>Trợ lý Master GEM trên Google Gemini:</b> Bạn có thể mở phiên tương tác và phân tích sâu trực tiếp trên Gemini tại đây:<br><br><a href="https://gemini.google.com/gem/1uTDDpV9-s0DnQ14HvyKOwassDTDpl1Cp?usp=sharing" target="_blank" rel="noopener" style="display:inline-block;padding:8px 14px;background:linear-gradient(135deg,#0284c7,#6366f1);color:#fff;border-radius:10px;text-decoration:none;font-weight:800">🚀 Mở Master GEM trên Gemini ↗</a>' },
   { k: ['astronixa là gì', 'là gì vậy', 'giới thiệu', 'super app'], a: '🌌 <b>Astronixa</b> là siêu ứng dụng <b>All-in-One từ Mỹ</b>, hợp nhất: Mạng xã hội, Ví Crypto, TMĐT, AI Agent, Meeting 4K & Affiliate. Giúp tiết kiệm 80% chi phí phần mềm và tự động hóa toàn bộ công việc.' },
   { k: ['khác gì', 'so sánh', 'facebook', 'zalo', 'zoom', 'khác biệt'], a: '🚀 <b>Astronixa khác biệt hoàn toàn:</b> Thay vì dùng 6 app rời rạc và tốn hàng triệu mỗi tháng, Astronixa hợp nhất MXH + Chat E2E + Meeting 4K + Sàn TMĐT + AI Agent + Ví Token chỉ trong 1 tài khoản duy nhất, vừa làm việc vừa tạo thu nhập.' },
   { k: ['dùng thật', 'thực tế', 'thật không', 'app thật', 'sản phẩm thật'], a: '📱 <b>App đang hoạt động thực tế 100%!</b> Bạn có thể tải ngay trên App Store & Google Play, trải nghiệm các tính năng nhắn tin, gọi video 4K, tương tác AI và kiếm thu nhập thụ động mỗi ngày.' },
