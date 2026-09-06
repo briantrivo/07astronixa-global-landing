@@ -505,15 +505,67 @@ function switchAgent(id) {
   const body = document.getElementById('chatBody');
 
   if (chAv) chAv.textContent = a.emoji;
-  if (chNm) chNm.innerHTML = `${a.name} <span style="font-size:.7rem">✔</span>`;
+  if (chNm) chNm.innerHTML = `${a.name} <span style="font-size:.7rem">✔</span> <span class="ch-badge">✨ Gemini AI</span>`;
   if (chSt) chSt.textContent = `${a.role} · Đang trực tuyến`;
   if (body) body.innerHTML = '';
   buildTabs();
   buildQuick();
-  setTimeout(() => addMsg(a.greeting, 'bot'), 150);
+  chatHistory = [];
+  setTimeout(() => {
+    addMsg(a.greeting, 'bot');
+    chatHistory.push({ sender: 'bot', text: a.greeting });
+  }, 150);
 }
 
-function respond(text) {
+let chatHistory = [];
+
+function showTyping() {
+  const body = document.getElementById('chatBody');
+  if (!body) return null;
+  const d = document.createElement('div');
+  d.className = 'msg bot typing';
+  d.id = 'chatTyping';
+  d.innerHTML = '<span></span><span></span><span></span>';
+  body.appendChild(d);
+  body.scrollTop = body.scrollHeight;
+  return d;
+}
+
+function removeTyping() {
+  const t = document.getElementById('chatTyping');
+  if (t) t.remove();
+}
+
+async function respond(text) {
+  showTyping();
+  chatHistory.push({ sender: 'user', text: text });
+
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: text,
+        agentId: curAgent,
+        history: chatHistory.slice(-6)
+      })
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.reply && !data.fallback) {
+        removeTyping();
+        addMsg(data.reply, 'bot');
+        chatHistory.push({ sender: 'bot', text: data.reply });
+        return;
+      }
+    }
+  } catch (err) {
+    console.warn('Gemini API fetch fallback to local KB:', err);
+  }
+
+  // Fallback to local KB matcher
+  removeTyping();
   const t = (text || '').toLowerCase();
   let best = null;
   for (const item of KB) {
@@ -522,13 +574,17 @@ function respond(text) {
       break;
     }
   }
+
   setTimeout(() => {
     if (best) {
       addMsg(best.a, 'bot');
+      chatHistory.push({ sender: 'bot', text: best.a });
     } else {
-      addMsg('Cảm ơn bạn! 💜 Bạn có thể để lại thông tin trong Form đăng ký hoặc liên hệ trực tiếp Hotline/Zalo <b>0931332671</b> của <b>Chuyên Gia Võ Quốc Trí</b> để được giải đáp chuyên sâu nhé.', 'bot');
+      const fallbackReply = 'Cảm ơn bạn! 💜 Bạn có thể để lại thông tin trong Form đăng ký hoặc liên hệ trực tiếp Hotline/Zalo <b>0931332671</b> của <b>Chuyên Gia Võ Quốc Trí</b> để được giải đáp chuyên sâu nhé.';
+      addMsg(fallbackReply, 'bot');
+      chatHistory.push({ sender: 'bot', text: fallbackReply });
     }
-  }, 350);
+  }, 200);
 }
 
 function sendChat() {
