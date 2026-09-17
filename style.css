@@ -197,16 +197,16 @@ header.scrolled {
 
 /* ===== HERO ===== */
 .hero { padding: 130px 0 50px; text-align: center; position: relative; }
-/* ===== 5-PHONE 3D HERO SHOWCASE ===== */
+/* ===== 9-PHONE / MULTI-PHONE 3D HERO SHOWCASE ===== */
 .phones-3d-stage {
   position: relative;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1320px;
   margin: 10px auto 44px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  perspective: 1200px;
+  perspective: 1400px;
   perspective-origin: 50% 60%;
   padding: 24px 10px 15px;
 }
@@ -216,8 +216,8 @@ header.scrolled {
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 85%;
-  height: 90%;
+  width: 90%;
+  height: 95%;
   background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.28) 40%, rgba(199, 75, 255, 0.12) 65%, transparent 80%);
   filter: blur(40px);
   pointer-events: none;
@@ -232,16 +232,16 @@ header.scrolled {
 .phone-item {
   position: relative;
   flex: 0 0 auto;
-  width: 224px;
-  margin: 0 -16px;
+  width: 220px;
+  margin: 0 -18px;
   transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   z-index: 1;
 }
 
 .phone-item:hover {
-  z-index: 20 !important;
-  transform: translateY(-22px) scale(1.1) rotate(0deg) !important;
+  z-index: 25 !important;
+  transform: translateY(-22px) scale(1.12) rotate(0deg) !important;
 }
 .phone-item:hover .phone-badge {
   background: var(--grad);
@@ -249,6 +249,51 @@ header.scrolled {
   border-color: rgba(255,255,255,0.6);
   box-shadow: 0 8px 20px rgba(168, 85, 247, 0.6);
   transform: translateY(-4px);
+}
+
+/* 9-Phone 3D Rotations & Stacking */
+.phone-9-p1 {
+  transform: rotateY(32deg) rotateZ(-8deg) translateY(34px) scale(0.78);
+  z-index: 1;
+}
+.phone-9-p2 {
+  transform: rotateY(24deg) rotateZ(-6deg) translateY(22px) scale(0.86);
+  z-index: 3;
+  margin: 0 -18px;
+}
+.phone-9-p3 {
+  transform: rotateY(16deg) rotateZ(-4deg) translateY(10px) scale(0.94);
+  z-index: 5;
+  margin: 0 -16px;
+}
+.phone-9-p4 {
+  transform: rotateY(8deg) rotateZ(-2deg) translateY(-2px) scale(1.02);
+  z-index: 7;
+  margin: 0 -14px;
+}
+.phone-9-p5 {
+  transform: rotateY(0deg) rotateZ(0deg) translateY(-16px) scale(1.15);
+  z-index: 9;
+  margin: 0 -10px;
+}
+.phone-9-p6 {
+  transform: rotateY(-8deg) rotateZ(2deg) translateY(-2px) scale(1.02);
+  z-index: 7;
+  margin: 0 -14px;
+}
+.phone-9-p7 {
+  transform: rotateY(-16deg) rotateZ(4deg) translateY(10px) scale(0.94);
+  z-index: 5;
+  margin: 0 -16px;
+}
+.phone-9-p8 {
+  transform: rotateY(-24deg) rotateZ(6deg) translateY(22px) scale(0.86);
+  z-index: 3;
+  margin: 0 -18px;
+}
+.phone-9-p9 {
+  transform: rotateY(-32deg) rotateZ(8deg) translateY(34px) scale(0.78);
+  z-index: 1;
 }
 
 /* 5-Phone 3D Rotations & Stacking */
