@@ -353,6 +353,42 @@ function playTpl(sel) {
   if (e) e.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+function openVideoModal(ytId, title) {
+  const modal = document.getElementById('videoModal');
+  const iframe = document.getElementById('vmIframe');
+  const titleEl = document.getElementById('vmTitle');
+  if (modal && iframe) {
+    if (titleEl && title) titleEl.textContent = title;
+    iframe.src = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0`;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeVideoModal() {
+  const modal = document.getElementById('videoModal');
+  const iframe = document.getElementById('vmIframe');
+  if (modal && iframe) {
+    iframe.src = '';
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+}
+
+function shareVideoLink(url, title) {
+  if (navigator.share) {
+    navigator.share({ title: title || 'Astronixa Ohana Career', text: title, url: url }).catch(() => {});
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(() => {
+      showToast('🔗 Đã sao chép link video vào bộ nhớ tạm!');
+    }).catch(() => {});
+  } else {
+    showToast('🔗 ' + url);
+  }
+}
+
 function shareTpl(title) {
   const url = location.href.split('#')[0];
   if (navigator.share) {
@@ -365,6 +401,13 @@ function shareTpl(title) {
     showToast('🔗 ' + url);
   }
 }
+
+// Global ESC key to close video modal
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeVideoModal();
+  }
+});
 
 function openWP() {
   const modal = document.getElementById('wpModal');

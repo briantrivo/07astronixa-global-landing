@@ -602,25 +602,120 @@ header.scrolled {
   .bento-4 { grid-template-columns: 1fr; grid-auto-rows: 200px; }
 }
 
-/* ===== Share Templates ===== */
+/* ===== Share Templates & Video Testimonials ===== */
 .share-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .vtpl { background: var(--card); border: 1px solid var(--line-2); border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; transition: transform .3s, box-shadow .3s; backdrop-filter: blur(10px); }
 .vtpl:hover { transform: translateY(-8px); border-color: var(--cyan); box-shadow: var(--shadow-lg); }
 .vtpl .thumb { position: relative; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .vtpl .thumb::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 38%, rgba(10, 6, 30, .6)); }
 .vtpl .thumb .tt { position: absolute; bottom: 12px; left: 14px; right: 14px; z-index: 2; color: #fff; font-family: 'Anton', sans-serif; font-size: 1.05rem; letter-spacing: .4px; text-shadow: 0 2px 10px rgba(0,0,0,.6); }
-.vtpl .play { position: relative; z-index: 2; width: 62px; height: 62px; border-radius: 50%; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.55); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: #fff; cursor: pointer; backdrop-filter: blur(4px); transition: .25s; }
-.vtpl .play:hover { transform: scale(1.1); background: rgba(255,255,255,.3); }
-.vtpl .tlabel { position: absolute; top: 14px; left: 14px; z-index: 2; font-size: .66rem; font-weight: 800; color: #fff; background: rgba(0,0,0,.4); border: 1px solid rgba(255,255,255,.35); padding: 5px 12px; border-radius: 30px; }
-.vtpl .tdur { position: absolute; top: 14px; right: 14px; z-index: 2; font-size: .66rem; font-weight: 800; color: #fff; background: rgba(0,0,0,.5); padding: 4px 9px; border-radius: 8px; }
+.vtpl .play { position: relative; z-index: 2; width: 62px; height: 62px; border-radius: 50%; background: rgba(255,255,255,.2); border: 2px solid rgba(255,255,255,.7); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: #fff; cursor: pointer; backdrop-filter: blur(6px); transition: all .25s; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+.vtpl .play:hover { transform: scale(1.15); background: var(--grad); border-color: #fff; box-shadow: 0 0 30px rgba(168,85,247,0.7); }
+.vtpl .tlabel { position: absolute; top: 14px; left: 14px; z-index: 2; font-size: .66rem; font-weight: 800; color: #fff; background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.35); padding: 5px 12px; border-radius: 30px; backdrop-filter: blur(6px); }
+.vtpl .tdur { position: absolute; top: 14px; right: 14px; z-index: 2; font-size: .66rem; font-weight: 800; color: #fff; background: rgba(0,0,0,.65); padding: 4px 10px; border-radius: 8px; backdrop-filter: blur(6px); }
 .vtpl .vbody { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+.v-headline { font-size: .95rem; font-weight: 800; color: #F8FAFC; margin-bottom: 12px; line-height: 1.35; }
 .vtpl ul { list-style: none; display: grid; gap: 9px; margin-bottom: 16px; flex: 1; }
 .vtpl li { display: flex; gap: 9px; color: var(--muted); font-size: .87rem; line-height: 1.45; }
 .vtpl li .d { color: var(--cyan); font-weight: 800; flex: 0 0 auto; }
-.vtpl .vcta { display: flex; gap: 9px; }
-.vtpl .vcta button { flex: 1; padding: 11px; border-radius: 12px; border: none; cursor: pointer; font-weight: 800; font-size: .8rem; display: flex; align-items: center; justify-content: center; gap: 6px; font-family: 'Arimo', sans-serif; }
-.vtpl .vcta .vwatch { color: #fff; background: var(--grad); }
+.vtpl .vcta { display: flex; gap: 8px; flex-wrap: wrap; }
+.vtpl .vcta button, .vtpl .vcta a { flex: 1; min-width: 80px; padding: 10px 8px; border-radius: 12px; border: none; cursor: pointer; font-weight: 800; font-size: .78rem; display: flex; align-items: center; justify-content: center; gap: 5px; font-family: 'Arimo', sans-serif; text-decoration: none; text-align: center; transition: all .25s; }
+.vtpl .vcta .vwatch { color: #fff; background: var(--grad); box-shadow: 0 4px 14px rgba(139, 92, 255, .35); }
+.vtpl .vcta .vwatch:hover { filter: brightness(1.15); transform: translateY(-2px); }
+.vtpl .vcta .vyt-link { color: #FCA5A5; background: rgba(239, 68, 68, .15); border: 1px solid rgba(239, 68, 68, .35); }
+.vtpl .vcta .vyt-link:hover { background: #DC2626; color: #fff; transform: translateY(-2px); box-shadow: 0 4px 14px rgba(220, 38, 38, .4); }
 .vtpl .vcta .vshare { color: var(--ink-2); background: rgba(139, 92, 255, .18); border: 1px solid var(--line-2); }
+.vtpl .vcta .vshare:hover { background: rgba(139, 92, 255, .35); color: #fff; transform: translateY(-2px); }
+
+/* ===== Video Modal Player ===== */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.video-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+.vm-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 6, 30, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.vm-content {
+  position: relative;
+  width: 100%;
+  max-width: 920px;
+  background: #140d30;
+  border: 1px solid var(--line-2);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 50px rgba(139, 92, 255, 0.35);
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+.video-modal.open .vm-content {
+  transform: scale(1);
+}
+.vm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 22px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid var(--line);
+}
+.vm-header h3 {
+  font-size: 1.05rem;
+  color: #fff;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 12px;
+}
+.vm-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--line-2);
+  color: #fff;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex: 0 0 auto;
+}
+.vm-close:hover {
+  background: rgba(239, 68, 68, 0.8);
+  border-color: #ef4444;
+  transform: rotate(90deg);
+}
+.vm-player-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+.vm-player-box iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 
 /* ===== Mentor Chuyên Gia Võ Quốc Trí ===== */
 .mentor-hero-section { text-align: left; }
