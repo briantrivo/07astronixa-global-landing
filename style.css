@@ -251,6 +251,31 @@ header.scrolled {
   transform: translateY(-4px);
 }
 
+/* 5-Phone 3D Rotations & Stacking */
+.phone-5-p1, .phone-p1 {
+  transform: rotateY(24deg) rotateZ(-6deg) translateY(22px) scale(0.88);
+  z-index: 1;
+}
+.phone-5-p2, .phone-p2 {
+  transform: rotateY(12deg) rotateZ(-3deg) translateY(5px) scale(0.96);
+  z-index: 3;
+  margin: 0 -12px;
+}
+.phone-5-p3, .phone-p3 {
+  transform: rotateY(0deg) rotateZ(0deg) translateY(-14px) scale(1.12);
+  z-index: 6;
+  margin: 0 -6px;
+}
+.phone-5-p4, .phone-p4 {
+  transform: rotateY(-12deg) rotateZ(3deg) translateY(5px) scale(0.96);
+  z-index: 3;
+  margin: 0 -12px;
+}
+.phone-5-p5, .phone-p5 {
+  transform: rotateY(-24deg) rotateZ(6deg) translateY(22px) scale(0.88);
+  z-index: 1;
+}
+
 /* 4-Phone 3D Rotations & Stacking */
 .phone-4-p1 {
   transform: rotateY(20deg) rotateZ(-5deg) translateY(18px) scale(0.92);
