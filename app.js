@@ -348,9 +348,14 @@ function openRegister() {
   if (el) el.scrollIntoView({ behavior: 'smooth' });
 }
 
-function playTpl(sel) {
-  const e = document.querySelector(sel);
-  if (e) e.scrollIntoView({ behavior: 'smooth', block: 'start' });
+function playInlineVideo(thumbId, ytId, title) {
+  const thumb = document.getElementById(thumbId);
+  if (thumb) {
+    thumb.innerHTML = `<iframe src="https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0&playsinline=1" title="${title || 'YouTube Video'}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:20px 20px 0 0;z-index:10"></iframe>`;
+    thumb.onclick = null;
+    thumb.style.cursor = 'default';
+    thumb.style.background = '#000';
+  }
 }
 
 function openVideoModal(ytId, title) {
