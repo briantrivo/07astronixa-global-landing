@@ -232,8 +232,8 @@ header.scrolled {
 .phone-item {
   position: relative;
   flex: 0 0 auto;
-  width: 205px;
-  margin: 0 -22px;
+  width: 224px;
+  margin: 0 -16px;
   transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   z-index: 1;
@@ -251,26 +251,23 @@ header.scrolled {
   transform: translateY(-4px);
 }
 
-/* 3D Rotations & Stacking */
-.phone-p1 {
-  transform: rotateY(28deg) rotateZ(-9deg) translateY(28px) scale(0.85);
+/* 4-Phone 3D Rotations & Stacking */
+.phone-4-p1 {
+  transform: rotateY(20deg) rotateZ(-5deg) translateY(18px) scale(0.92);
   z-index: 1;
 }
-.phone-p2 {
-  transform: rotateY(16deg) rotateZ(-4deg) translateY(10px) scale(0.94);
-  z-index: 2;
-}
-.phone-p3 {
-  transform: translateY(-10px) scale(1.08);
+.phone-4-p2 {
+  transform: rotateY(5deg) rotateZ(-1.2deg) translateY(-10px) scale(1.08);
   z-index: 5;
-  margin: 0 -10px;
+  margin: 0 -8px;
 }
-.phone-p4 {
-  transform: rotateY(-16deg) rotateZ(4deg) translateY(10px) scale(0.94);
-  z-index: 2;
+.phone-4-p3 {
+  transform: rotateY(-5deg) rotateZ(1.2deg) translateY(-2px) scale(1.02);
+  z-index: 3;
+  margin: 0 -8px;
 }
-.phone-p5 {
-  transform: rotateY(-28deg) rotateZ(9deg) translateY(28px) scale(0.85);
+.phone-4-p4 {
+  transform: rotateY(-20deg) rotateZ(5deg) translateY(18px) scale(0.92);
   z-index: 1;
 }
 
